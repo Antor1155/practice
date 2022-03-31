@@ -12,12 +12,12 @@ const Header = () => {
     ]
 
     return (
-        <nav>
-            <div onClick={() => setOpen(!open)} className='w-6 h-6 md:hidden'>
+        <nav className='bg-red-300'>
+            <div onClick={() => setOpen(!open)} className='w-6 h-6  md:hidden'>
                 {open? <XIcon></XIcon> :<MenuIcon></MenuIcon>}
             </div>
 
-            <ul className={`md:flex justify-center absolute duration-500 ease-in ${open? 'top-6' : 'top-[-160px]' }`}>
+            <ul className={`md:flex justify-center w-full bg-red-300  absolute md:static duration-500 ease-in ${open? 'top-6' : 'top-[-160px]' }`}>
                 {headerButtons.map(button => <li className='ml-5' key={button.id}>{button.name}</li>)}
             </ul>
         </nav>
