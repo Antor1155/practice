@@ -1,0 +1,9 @@
+.App {
+  text-align: center;
+}
+
+.mealsContainer{
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
