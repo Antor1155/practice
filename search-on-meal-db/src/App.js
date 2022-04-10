@@ -1,30 +1,29 @@
-import { useEffect, useState } from 'react';
+
+import { Link, Route, Routes } from 'react-router-dom';
 import './App.css';
-import SearchMeal from './Components/Search/SearchMeal';
+import Meals from './Components/Meals/Meals';
+import NotFound from './Components/NotFound/NotFound';
+import SingleMeal from './Components/SingleMeal/SingleMeal';
+
 
 function App() {
-  const [searchItem, setSearchItem] = useState('');
-  const [meals, setMeals] = useState([]);
-
-  useEffect(function () {
-    fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${searchItem}`)
-      .then(res => res.json())
-      .then(data => setMeals(data.meals))
-  }, [searchItem]);
-
-  // ******************************************
-  const searchEvent = event => {
-    setSearchItem(event.target.value);
-  };
-  // ******************************************
-
   return (
     <div className="App">
-      <h1>search the meal</h1>
-      <input onChange={searchEvent} type="text" name="" id="" />
-      <div className='mealsContainer'>
-        {meals.map(meal => <SearchMeal key={meal.idMeal} meal={meal}></SearchMeal>)}
+      <div style={{backgroundColor:'yellow'}}>
+        <h3>this is a demo navbar
+          <br />
+          <Link to='/meals'>search items</Link>
+          <br />
+          <Link to='/'> home</Link>
+        </h3>
       </div>
+      <Routes>
+        <Route path='/meals' element={<Meals></Meals>}></Route>
+        <Route path='/meals/:id' element={<SingleMeal></SingleMeal>}></Route>
+        <Route path='*' element={<NotFound></NotFound>}></Route>
+      </Routes>
+
+
     </div>
   );
 }
